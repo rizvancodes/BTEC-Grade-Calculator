@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Diploma
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center text-muted">Diploma</h1>
+    <select name="courses", class="form-control", id="all_courses">
+        <option value="" selected disabled hidden>Select Course</option>
+        {% for course in all_courses %}
+        <option value="{{ course }}">{{ course }}</option>
+        {% endfor %}
+    </select>
+    <table>
+        <thead>
+            <tr>
+                <th>Unit</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit1">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade1">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit2">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade2">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit3">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade3">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit4">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade4">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit5">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade5">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit6">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade6">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit7">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade7">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="units", class="form-control all_units", id="unit8">
+                        {% for unit in all_units %}
+                        <option value=""></option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="units", class="form-control", id="grade8">
+                            <option value="D">Distinction</option>
+                            <option value="M">Merit</option>
+                            <option value="P">Pass</option>
+                            <option value="N">Near Pass</option>
+                            <option value="U">Unclassified</option>
+                        </select>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <div>
+        <button type="button" id="calculate_grade">Submit</button>
+    </div>
+    <h3 id="calculated_grade">
+        Your estimated grade will be displayed here
+    </h3>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#all_courses').change(function(){
+
+                $.getJSON('/_update_dropdown', {
+                    selected_course: $('#all_courses').val()
+
+                }).success(function(data) {
+                        $('.all_units').html(data.html_string_selected);
+                })
+            });
+            $('#calculate_grade').bind('click', function() {
+
+                $.getJSON('/_calculate_grade', {
+                    selected_course: $('#all_courses').val(),
+                    points_ref: 'dip',
+                    unit1: $('#unit1').val(),
+                    grade1: $('#grade1').val(),
+                    unit2: $('#unit2').val(),
+                    grade2: $('#grade2').val(),
+                    unit3: $('#unit3').val(),
+                    grade3: $('#grade3').val(),
+                    unit4: $('#unit4').val(),
+                    grade4: $('#grade4').val(),
+                    unit5: $('#unit5').val(),
+                    grade5: $('#grade5').val(),
+                    unit6: $('#unit6').val(),
+                    grade6: $('#grade6').val(),
+                    unit7: $('#unit7').val(),
+                    grade7: $('#grade7').val(),
+                    unit8: $('#unit8').val(),
+                    grade8: $('#grade8').val(),
+                }).success(function(data) {
+                    $('#calculated_grade').text(data.grade_report);
+                })
+                return false;
+
+            });
+        });
+    </script>
+{% endblock %}
